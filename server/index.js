@@ -1,5 +1,9 @@
-import { sayHi } from "./ex";
-let say = require("./ex");
-sayHi("hi");
+import express from "express";
 
-say.sayHi("second");
+const app = express();
+
+app.get("/", (req, res) => {
+    res.send("Root");
+});
+
+app.listen(3000, () => console.log("Example app listening on port 3000!"));
