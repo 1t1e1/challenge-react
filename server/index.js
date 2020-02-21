@@ -9,12 +9,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+app.use((req, res, next) => {
+    req.context = {
+        data,
+    };
+    next();
+});
+
 app.get("/", (req, res) => {
-    res.send(data);
+    res.send(req.context.data);
 });
 
 app.get("/detail/:id", (req, res) => {
-    res.send(data[req.params.id]);
+    // make id is not found
+    res.send(req.context.data[req.params.id]);
 });
 
 app.post("/create/", (req, res) => {
@@ -26,7 +34,7 @@ app.post("/create/", (req, res) => {
         yazarinAdi: req.body.yazarinAdi,
         yayinEvi: req.body.yayinEvi,
     };
-    data[id] = yeniKitap;
+    req.context.data[id] = yeniKitap;
     res.send(yeniKitap);
 });
 
