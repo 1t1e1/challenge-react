@@ -4,6 +4,8 @@ import uuidv4 from "uuid/v4";
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 const data = {
     0: {
@@ -48,11 +50,12 @@ app.get("/detail/:id", (req, res) => {
 
 app.post("/create/", (req, res) => {
     const id = uuidv4();
+    // input lar bos mu diye control et
     const yeniKitap = {
         id,
-        kitapAdi: "deneme",
-        yazarinAdi: "deneme",
-        yayinEvi: "deneme",
+        kitapAdi: req.body.kitapAdi,
+        yazarinAdi: req.body.yazarinAdi,
+        yayinEvi: req.body.yayinEvi,
     };
     data[id] = yeniKitap;
     res.send(yeniKitap);

@@ -14,8 +14,6 @@ curl http://localhost:3000/detail/1
 ## create page
 
 ```
-╰─➤ curl http://localhost:3000/create -X POST  
-{"id":"af43eabf-35d5-48bd-91ba-0ffee9f3f8d1","kitapAdi":"deneme","yazarinAdi":"deneme","yayinEvi":"deneme"}%                                                    ╭
-╰─➤  curl http://localhost:3000/detail/af43eabf-35d5-48bd-91ba-0ffee9f3f8d1
-{"id":"af43eabf-35d5-48bd-91ba-0ffee9f3f8d1","kitapAdi":"deneme","yazarinAdi":"deneme","yayinEvi":"deneme"}%                                                    ╭
+─➤  curl -X POST -H "Content-Type:application/json" http://localhost:3000/create -d '{"kitapAdi":"book from console", "yazarinAdi":"yazar from console", "yayinEvi":"yayin evi console"}'       
+{"id":"155c5762-12c2-4690-8712-ac0af6bdddf2","kitapAdi":"book from console","yazarinAdi":"yazar from console","yayinEvi":"yayin evi console"}
 ```
